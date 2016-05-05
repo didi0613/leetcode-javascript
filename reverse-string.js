@@ -9,3 +9,9 @@ var reverseString = function(s) {
         return s.split('').reverse().join('');
     }
 };
+
+/**
+ * Summarize:
+ * - split(''): Transform String into Array, split by parameters
+ * - join(''): Concatenate each item in array into String, join by parameters
+ */

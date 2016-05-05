@@ -8,5 +8,4 @@ var canWinNim = function (n) {
 
 /**
  * Summarize
- *
  */

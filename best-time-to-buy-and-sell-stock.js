@@ -16,3 +16,7 @@ var maxProfit = function(prices) {
 
     return ret;
 };
+
+/*
+* Summarization
+*/

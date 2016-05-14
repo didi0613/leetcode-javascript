@@ -4,19 +4,26 @@
  */
 var maxProfit = function(prices) {
     var len = prices.length;
-    var ret = 0;
+    if(len === 0) {
+        return 0;
+    } else {
+        var minBuy = prices[0];
+        var ret = 0;
 
-    for(var i=0;i<len;i++) {
-        var sellMax = 0;
-        for(var j = i+1;j<len;j++) {
-            sellMax = Math.max(sellMax, prices[j]);
+        for(var i=1;i<prices.length;i++) {
+            if(prices[i] < minBuy) {
+                minBuy = prices[i];
+            } else {
+                ret = Math.max(ret, (prices[i] - minBuy))
+            }
         }
-        ret = Math.max(ret, sellMax-prices[i]);
-    }
 
-    return ret;
+        return ret;
+    }
 };
 
 /*
-* Summarize
+* Summarize:
+* minBuy records the min value before current position i
+* ret records the max profit
 */

@@ -10,25 +10,32 @@
  * @return {number[][]}
  */
 var levelOrderBottom = function(root) {
-    if(root.left === null && root.right === null) {
-        return [[root]];
+    if(root === null) {
+        return [];
     } else {
-        var lastLevel = [root];
-        var ret = [root];
+        var lastLevel = [];
+        var ret = [];
+        var lastLevelData;
 
-        var i=0;
-        while(lastLevel) {
-             var len = lastLevel.length;
-             var level = [];
-             for(;i<len;i++) {
-                 if(lastLevel[i].val !== '#') {
-                     level.push(lastLevel.left);
-                     level.push(lastLevel.right);
-                     i+=2;
+        lastLevel.push(root);
+
+        while(lastLevel.length > 0) {
+            lastLevelData = [];
+            var level = [];
+
+             for(var i in lastLevel) {
+                 if(lastLevel[i].left) {
+                     level.push(lastLevel[i].left);
                  }
+                 if(lastLevel[i].right) {
+                     level.push(lastLevel[i].right);
+                 }
+                 lastLevelData.push(lastLevel.val);
              }
-             ret.unshift(level);
+             ret.unshift(lastLevelData);
              lastLevel = level;
         }
+
+        return ret;
     }
 };

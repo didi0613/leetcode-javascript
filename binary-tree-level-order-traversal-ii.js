@@ -30,7 +30,7 @@ var levelOrderBottom = function(root) {
                  if(lastLevel[i].right) {
                      level.push(lastLevel[i].right);
                  }
-                 lastLevelData.push(lastLevel.val);
+                 lastLevelData.push(lastLevel[i].val);
              }
              ret.unshift(lastLevelData);
              lastLevel = level;

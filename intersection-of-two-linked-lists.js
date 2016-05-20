@@ -12,21 +12,41 @@
  * @return {ListNode}
  */
 var getIntersectionNode = function(headA, headB) {
-    var hashmap = [];
-    var ret = null;
-    while(headA) {
-        hashmap.push(headA.val);
-        headA = headA.next;
+    var lenA = 0, lenB = 0;
+    var pa = headA;
+    var pb = headB;
+    while(pa) {
+        lenA++;
+        pa = pa.next;
     }
 
-    while(headB) {
-        if(hashmap.includes(headB.val)) {
-            ret = headB;
-            break;
-        } else {
-            headB = headB.next;
+    while(pb) {
+        lenB++;
+        pb = pb.next;
+    }
+
+    if(lenA >= lenB) {
+        var diff = lenA - lenB;
+        pa = headA;
+        pb = headB;
+        while(diff) {
+            pa = pa.next;
+            diff--;
+        }
+    } else {
+        var diff2 = lenB - lenA;
+        pa = headA;
+        pb = headB;
+        while(diff2) {
+            pb = pb.next;
+            diff2--;
         }
     }
 
-    return ret;
+    while(pa !== pb) {
+        pa = pa.next;
+        pb = pb.next;
+    }
+
+    return pa;
 };

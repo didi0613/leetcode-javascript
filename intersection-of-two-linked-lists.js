@@ -34,10 +34,8 @@ var getIntersectionNode = function(headA, headB) {
     }
 
     for(var i=b_len-1,j=a_len-1;i>=0,j>=0;i--,j--) {
-        if(array_b[i] === array_a[j]) {
-            ret = array_b[i];
-        } else {
-            return ret;
+        if(array_b[i] !== array_a[j]) {
+            ret = array_b[i].next;
         }
     }
 };

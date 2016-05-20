@@ -15,14 +15,13 @@ function ValidRow(i,board) {
             }
         }
     }
-
     return true;
 }
 
 function ValidCol(i,board) {
     var hashMap = [];
 
-    for(var q=0;q<0;q++) {
+    for(var q=0;q<9;q++) {
         if(board[q][i] !== '.') {
             if(hashMap.includes(board[q][i])) {
                 return false;
@@ -31,23 +30,23 @@ function ValidCol(i,board) {
             }
         }
     }
-
     return true;
 }
 
 function ValidSquare(row,col,board) {
-    var hashMap = [];
+    var history = [];
 
     for(var m=row*3; m<(row+1)*3;m++) {
         for(var n=col*3;n<(col+1)*3;n++) {
-            if(hashMap.includes(board[m][n])) {
-                return false;
-            } else {
-                hashMap.push(board[m][n]);
+            if(board[m][n] !== '.') {
+                if(history.includes(board[m][n])) {
+                    return false;
+                } else {
+                    history.push(board[m][n]);
+                }
             }
         }
     }
-
     return true;
 }
 

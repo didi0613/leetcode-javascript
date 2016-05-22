@@ -22,3 +22,9 @@ var isPalindrome = function(s) {
 
     return true;
 };
+
+/*
+* Summarize
+* \W
+* 匹配一个非单字字符 <=> [^A-Za-z0-9_]
+*/

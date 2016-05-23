@@ -26,10 +26,8 @@ var intersect = function(nums1, nums2) {
 
     // Loop the longer array to check matches in hashmap
     for(var j=0;j<len1;j++) {
-        if(nums1[j] in hashmap) {
-            if(!(nums1[j] in ret)) {
-                ret.push(nums1[j]);
-            }
+        if(nums1[j] in hashmap && hashmap[nums1[j]] > 0) {
+            ret.push(nums1[j]);
             hashmap[nums1[j]]--;
         }
     }

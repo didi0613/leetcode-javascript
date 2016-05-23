@@ -18,16 +18,19 @@ var solution = function(isBadVersion) {
      * @return {integer} The first bad version
      */
     return function(n) {
-        var low = 0,high=n;
-        while(low < high) {
-            var mid = (low+high)/2;
+        return findBadVersion(1,n);
+
+        function findBadVersion(start,end) {
+            var mid = parseInt((start+end)/2);
             if(isBadVersion(mid)) {
-                end = mid;
+                if(!isBadVersion(mid-1)) {
+                    return mid;
+                } else {
+                    return findBadVersion(start,mid-1);
+                }
             } else {
-                start = mid+1;
+                return findBadVersion(mid+1,end);
             }
         }
-
-        return start;
     };
 };

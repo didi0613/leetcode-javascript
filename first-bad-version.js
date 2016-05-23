@@ -22,8 +22,12 @@ var solution = function(isBadVersion) {
         while(low < high) {
             var mid = (low+high)/2;
             if(isBadVersion(mid)) {
-
+                end = mid;
+            } else {
+                start = mid+1;
             }
         }
+
+        return start;
     };
 };

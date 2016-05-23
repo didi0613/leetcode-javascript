@@ -11,14 +11,27 @@ var countPrimes = function(n) {
     for(var i=2;i<n;i++) {
         // add multiple of i into removed
         var k=2;
-        while(k*i < n) {
-            if(!remove.includes(k*i)) {
-                remove.push(k*i);
+        while(k*i<n) {
+            if(!remove[k*i]) {
+                remove[k*i] = true;
             }
             k++;
         }
     }
 
     // Also need to remove itself and 1
-    return n - remove.length - 2;
+    var ans = 0;
+    for(var p=2;p<n;p++) {
+        if(!remove[p]) {
+            ans++;
+        }
+    }
+
+    return ans;
 };
+
+
+/*
+* Push needs time to execute
+* Assign boolean number will faster the program
+*/

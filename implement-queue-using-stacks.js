@@ -33,3 +33,7 @@ Queue.prototype.peek = function() {
 Queue.prototype.empty = function() {
     return this.stack.length === 0;
 };
+
+/*
+* shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。
+*/

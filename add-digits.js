@@ -1,17 +1,47 @@
+// 1st Try
+// Time Complexity O(n)
+// Space Complexity O(1)
 /**
  * @param {number} num
  * @return {number}
  */
-var addDigits = function(num) {
-    // Solution 1
-    if(num < 10) {
+var addDigits = function (num) {
+    if (num < 10) {
         return num;
     }
 
-    return addDigits(num.toString().split('').reduce((a, b) => Number(a) + Number(b), 0));
+    return addDigits(num.toString().split('').reduce((a, b) = > Number(a) + Number(b), 0));
+};
 
-    // Solution 2 runtime O(1)
-    //return (num-1) % 9 + 1;
+// 2nd Try
+// Time Complexity O(1)
+// Space Complexity O(1)
+/**
+ * @param {number} num
+ * @return {number}
+ */
+var addDigits = function (num) {
+    return (num - 1) % 9 + 1;
+};
+
+// 3rd Try
+// Time Complexity O(n)
+// Space Complexity O(1)
+/**
+ * @param {number} num
+ * @return {number}
+ */
+var addDigits = function (num) {
+    var num_arr = num.toString().split('');
+    var ret = num_arr.reduce(function (a, b) {
+        return parseInt(a) + parseInt(b);
+    }, 0);
+
+    if (ret < 10) {
+        return ret;
+    } else {
+        return addDigits(ret);
+    }
 };
 
 /*

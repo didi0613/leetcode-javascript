@@ -2,6 +2,7 @@
  * @param {number[]} nums
  * @return {number}
  */
+// Solution 1
 var majorityElement = function (nums) {
     var len = nums.length;
     var ret = nums[0];
@@ -23,3 +24,20 @@ var majorityElement = function (nums) {
     }
     return ret;
 };
+
+// Solution 2
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var majorityElement = function (nums) {
+    nums.sort();
+    return nums[parseInt(nums.length / 2)];
+};
+
+/*
+ * Summmarize
+ * Sort the array,
+ * The middle value is the value we are seeking for
+ *
+ */

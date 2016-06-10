@@ -3,11 +3,11 @@
  * @param {string} t
  * @return {boolean}
  */
-var isAnagram = function(s, t) {
+var isAnagram = function (s, t) {
     return s.split("").sort().join("") == t.split("").sort().join("");
 };
 
 /*
-* Summarize:
-* sort only works with array
-*/
+ * Summarize:
+ * sort only works with array
+ */

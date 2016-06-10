@@ -2,23 +2,23 @@
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-var moveZeroes = function(nums) {
+var moveZeroes = function (nums) {
     var len = nums.length;
     var runner = 0, newIndex = 0;
 
-    while(runner < len) {
-        while(nums[runner] === 0) {
+    while (runner < len) {
+        while (nums[runner] === 0) {
             runner++;
         }
 
-        if(runner < len) {
+        if (runner < len) {
             nums[newIndex] = nums[runner];
             runner++;
             newIndex++;
         }
     }
 
-    for(var i = newIndex; i < len; i++) {
+    for (var i = newIndex; i < len; i++) {
         nums[i] = 0;
     }
 };

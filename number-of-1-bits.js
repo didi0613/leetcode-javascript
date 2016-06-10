@@ -1,3 +1,7 @@
+/*
+ * Transform decimal to n-ary bigit number.toString(n);
+ */
+// Solution 1
 /**
  * @param {number} n - a positive integer
  * @return {number}
@@ -17,6 +21,6 @@ var hammingWeight = function (n) {
     return ret;
 };
 
-/*
- * Transform decimal to n-ary bigit number.toString(n);
- */
+//
+// Bit Manipulation Resolution
+// Solution 2

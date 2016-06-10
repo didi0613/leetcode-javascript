@@ -3,6 +3,7 @@
  * @param {number[]} nums2
  * @return {number[]}
  */
+// Solution 1
 var intersect = function (nums1, nums2) {
     var len1 = nums1.length;
     var len2 = nums2.length;
@@ -49,7 +50,7 @@ var intersect = function (nums1, nums2) {
     if (len1 < len2) {
         return intersect(nums2, nums1);
     }
-    
+
     for (var i in nums2) {
         if (nums1.includes(nums2[i])) {
             ret.push(nums2[i]);

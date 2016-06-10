@@ -34,3 +34,29 @@ var intersect = function (nums1, nums2) {
 
     return ret;
 };
+
+// Solution 2
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var intersect = function (nums1, nums2) {
+    var len1 = nums1.length;
+    var len2 = nums2.length;
+    var ret = [];
+
+    if (len1 < len2) {
+        return intersect(nums2, nums1);
+    }
+    
+    for (var i in nums2) {
+        if (nums1.includes(nums2[i])) {
+            ret.push(nums2[i]);
+            var index = nums1.indexOf(nums2[i]);
+            nums1[index] = 'x';
+        }
+    }
+
+    return ret;
+};

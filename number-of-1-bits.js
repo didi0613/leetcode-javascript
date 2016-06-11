@@ -24,3 +24,15 @@ var hammingWeight = function (n) {
 //
 // Bit Manipulation Resolution
 // Solution 2
+/**
+ * @param {number} n - a positive integer
+ * @return {number}
+ */
+var hammingWeight = function (n) {
+    var ret = 0, i = 0;
+    while (i < 32) {
+        ret += (n >>> i) & 1;
+        i++;
+    }
+    return ret;
+};

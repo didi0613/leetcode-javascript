@@ -9,8 +9,8 @@
  * @param {TreeNode} root
  * @return {number[][]}
  */
-var levelOrderBottom = function(root) {
-    if(root === null) {
+var levelOrderBottom = function (root) {
+    if (root === null) {
         return [];
     } else {
         var lastLevel = [];
@@ -19,21 +19,21 @@ var levelOrderBottom = function(root) {
 
         lastLevel.push(root);
 
-        while(lastLevel.length > 0) {
+        while (lastLevel.length > 0) {
             lastLevelData = [];
             var level = [];
 
-             for(var i in lastLevel) {
-                 if(lastLevel[i].left) {
-                     level.push(lastLevel[i].left);
-                 }
-                 if(lastLevel[i].right) {
-                     level.push(lastLevel[i].right);
-                 }
-                 lastLevelData.push(lastLevel[i].val);
-             }
-             ret.unshift(lastLevelData);
-             lastLevel = level;
+            for (var i in lastLevel) {
+                if (lastLevel[i].left) {
+                    level.push(lastLevel[i].left);
+                }
+                if (lastLevel[i].right) {
+                    level.push(lastLevel[i].right);
+                }
+                lastLevelData.push(lastLevel[i].val);
+            }
+            ret.unshift(lastLevelData);
+            lastLevel = level;
         }
 
         return ret;

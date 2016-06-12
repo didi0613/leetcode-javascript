@@ -9,7 +9,7 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-
+// Solution 1
 function swapnode(h, r1, r2) {
     var next = r2.next;
     h.next = r2;
@@ -30,6 +30,41 @@ var swapPairs = function (head) {
 
 
     return newhead.next;
+};
+
+// Solution 2
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var swapPairs = function (head) {
+    if (head === null || head.next === null) {
+        return head;
+    }
+
+    var node = head;
+    var newNode = new ListNode(-1);
+    var prev = newNode;
+    prev.next = head;
+
+    while (node && node.next) {
+        var next = node.next.next;
+        prev.next = node.next;
+        node.next.next = node;
+        node.next = next;
+
+        prev = node;
+        node = prev.next;
+    }
+
+    return newNode.next;
 };
 
 /* Summarize

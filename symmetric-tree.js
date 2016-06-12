@@ -10,22 +10,22 @@
  * @return {boolean}
  */
 
- function Symmetric(left,right) {
-     if(left === null && right === null) {
-         return true;
-     } else if(left !== null && right !== null) {
-         if(left.val === right.val) {
-             return Symmetric(left.left, right.right) && Symmetric(left.right, right.left);
+function Symmetric(left, right) {
+    if (left === null && right === null) {
+        return true;
+    } else if (left !== null && right !== null) {
+        if (left.val === right.val) {
+            return Symmetric(left.left, right.right) && Symmetric(left.right, right.left);
         } else {
-             return false;
+            return false;
         }
-     } else {
-         return false;
-     }
- }
+    } else {
+        return false;
+    }
+}
 
-var isSymmetric = function(root) {
-    if(root === null) {
+var isSymmetric = function (root) {
+    if (root === null) {
         return true;
     }
 

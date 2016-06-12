@@ -1,3 +1,4 @@
+// Solution 1
 /**
  * @param {number[]} nums
  * @param {number} val
@@ -31,4 +32,29 @@ var removeElement = function (nums, val) {
 
     return len - removeNum;
 
+};
+
+// Solution 2
+/**
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+var removeElement = function (nums, val) {
+    var len = nums.length;
+    if (len === 0) {
+        return len;
+    }
+
+    var index = 0;
+    for (var i = 0; i < len; i++) {
+        if (nums[i] === val) {
+            continue;
+        } else {
+            nums[index] = nums[i];
+            index++;
+        }
+    }
+
+    return index;
 };

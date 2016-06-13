@@ -24,7 +24,7 @@ var generate = function (numRows) {
 
         ret.push(last);
         last = current;
-        numRows--;
+        numRows--
     }
 
     return ret;

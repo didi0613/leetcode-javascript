@@ -1,7 +1,7 @@
 /**
  * @constructor
  */
-var Stack = function() {
+var Stack = function () {
     this.queue = [];
 };
 
@@ -9,27 +9,27 @@ var Stack = function() {
  * @param {number} x
  * @returns {void}
  */
-Stack.prototype.push = function(x) {
+Stack.prototype.push = function (x) {
     this.queue.push(x);
 };
 
 /**
  * @returns {void}
  */
-Stack.prototype.pop = function() {
+Stack.prototype.pop = function () {
     this.queue.pop();
 };
 
 /**
  * @returns {number}
  */
-Stack.prototype.top = function() {
-    return this.queue[this.queue.length-1];
+Stack.prototype.top = function () {
+    return this.queue[this.queue.length - 1];
 };
 
 /**
  * @returns {boolean}
  */
-Stack.prototype.empty = function() {
+Stack.prototype.empty = function () {
     return this.queue.length === 0;
 };

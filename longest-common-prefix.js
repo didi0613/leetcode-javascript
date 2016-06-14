@@ -2,6 +2,7 @@
  * @param {string[]} strs
  * @return {string}
  */
+// Solution 1
 var longestCommonPrefix = function (strs) {
     var strnum = strs.length;
 
@@ -24,4 +25,35 @@ var longestCommonPrefix = function (strs) {
     }
 
     return prefix;
+};
+
+// Solution 2
+/**
+ * @param {string[]} strs
+ * @return {string}
+ */
+var longestCommonPrefix = function (strs) {
+    var len = strs.length;
+    if (len === 0) {
+        return "";
+    }
+    if (len === 1) {
+        return strs[0];
+    }
+
+    // Guarantee there are at lease 2 strings
+    var ret = "";
+    for (var index = 0; ; index++) {
+        var target = strs[0][index];
+
+        for (var i = 1; i < len; i++) {
+            if (strs[i][index] !== target || index >= strs[i].length) {
+                return ret;
+            }
+        }
+
+        ret += target;
+    }
+
+    return ret;
 };

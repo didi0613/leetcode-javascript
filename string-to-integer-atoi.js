@@ -15,3 +15,6 @@ var myAtoi = function (str) {
         return 0;
     }
 };
+
+// Integer Range 32 bits
+// -Math.pow(2,31) ~ Math.pow(2,31)-1

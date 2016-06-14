@@ -2,12 +2,12 @@
  * @constructor
  * @param {number[]} nums
  */
-var NumArray = function(nums) {
+var NumArray = function (nums) {
     this.total = [];
     var len = nums.length;
     var sum = 0;
-    for(var i=0;i<len;i++) {
-        sum+=nums[i];
+    for (var i = 0; i < len; i++) {
+        sum += nums[i];
         this.total[i] = sum;
     }
 };
@@ -17,11 +17,11 @@ var NumArray = function(nums) {
  * @param {number} j
  * @return {number}
  */
-NumArray.prototype.sumRange = function(i, j) {
-    if(i===0) {
+NumArray.prototype.sumRange = function (i, j) {
+    if (i === 0) {
         return this.total[j];
     } else {
-        return this.total[j] - this.total[i-1];
+        return this.total[j] - this.total[i - 1];
     }
 };
 

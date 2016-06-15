@@ -2,6 +2,7 @@
  * @param {string} s
  * @return {boolean}
  */
+// Solution 1
 var isPalindrome = function (s) {
     s = s.replace(/\W/g, '').toLowerCase();
 
@@ -18,6 +19,39 @@ var isPalindrome = function (s) {
         }
         start++;
         end--;
+    }
+
+    return true;
+};
+
+// Solution 2
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindrome = function (s) {
+    s = s.trim();
+    var len = s.length;
+    if (len <= 1) {
+        return true;
+    }
+
+    var start = 0, end = len - 1;
+    while (start < end) {
+        while (!s[start].match(/[a-zA-Z0-9]/g) && start < len && start < end) {
+            start++;
+        }
+
+        while (!s[end].match(/[a-zA-Z0-9]/g) && end >= 0 && end > start) {
+            end--;
+        }
+
+        if (s[start].toLowerCase() !== s[end].toLowerCase()) {
+            return false;
+        } else {
+            start++;
+            end--;
+        }
     }
 
     return true;

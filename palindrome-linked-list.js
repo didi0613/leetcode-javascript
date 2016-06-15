@@ -1,3 +1,6 @@
+// Solution 1
+// Space Complexity O(N)
+// Time Complexity O(N)
 /**
  * Definition for singly-linked list.
  * function ListNode(val) {
@@ -33,3 +36,7 @@ var isPalindrome = function (head) {
         return true;
     }
 };
+
+// Solution 2
+// Space Complexity O(1)
+// Time Complexity O(N)

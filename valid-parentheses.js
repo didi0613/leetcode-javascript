@@ -2,19 +2,19 @@
  * @param {string} s
  * @return {boolean}
  */
-var isValid = function(s) {
+var isValid = function (s) {
     var stack = [];
 
     var len = s.length;
-    if(len===0) {
+    if (len === 0) {
         return true;
     }
-    if(len ===1) {
+    if (len === 1) {
         return false;
     }
 
-    for(var i=0;i<len;i++) {
-        switch(s[i]) {
+    for (var i = 0; i < len; i++) {
+        switch (s[i]) {
             case '(':
                 stack.push('(');
                 break;
@@ -25,17 +25,17 @@ var isValid = function(s) {
                 stack.push('[');
                 break;
             case ')':
-                if(stack.pop() !== '(') {
+                if (stack.pop() !== '(') {
                     return false;
                 }
                 break;
             case '}':
-                if(stack.pop() !== '{') {
+                if (stack.pop() !== '{') {
                     return false;
                 }
                 break;
             case ']':
-                if(stack.pop() !== '[') {
+                if (stack.pop() !== '[') {
                     return false;
                 }
                 break;

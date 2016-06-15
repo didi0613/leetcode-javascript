@@ -2,18 +2,18 @@
  * @param {number} n
  * @return {number}
  */
-var countPrimes = function(n) {
-    if(n < 2) {
+var countPrimes = function (n) {
+    if (n < 2) {
         return 0;
     }
 
     var remove = [];
-    for(var i=2;i<n;i++) {
+    for (var i = 2; i < n; i++) {
         // add multiple of i into removed
-        var k=2;
-        while(k*i<n) {
-            if(!remove[k*i]) {
-                remove[k*i] = true;
+        var k = 2;
+        while (k * i < n) {
+            if (!remove[k * i]) {
+                remove[k * i] = true;
             }
             k++;
         }
@@ -21,8 +21,8 @@ var countPrimes = function(n) {
 
     // Also need to remove itself and 1
     var ans = 0;
-    for(var p=2;p<n;p++) {
-        if(!remove[p]) {
+    for (var p = 2; p < n; p++) {
+        if (!remove[p]) {
             ans++;
         }
     }
@@ -32,6 +32,6 @@ var countPrimes = function(n) {
 
 
 /*
-* Push needs time to execute
-* Assign boolean number will faster the program
-*/
+ * Push needs time to execute
+ * Assign boolean number will faster the program
+ */

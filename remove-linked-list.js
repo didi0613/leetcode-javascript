@@ -54,6 +54,7 @@ var removeElements = function (head, val) {
         return head;
     }
 
+    // **********
     if (head.val === val) {
         return removeElements(head.next, val);
     }

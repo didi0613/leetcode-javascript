@@ -10,26 +10,28 @@ var compareVersion = function (version1, version2) {
     var len2 = arr2.length;
 
     for (var i = 0; i < len1 && i < len2; i++) {
-        if (parseInt(arr1[i]) < parseInt(arr2[i])) {
-            return -1;
-        }
-        else if (parseInt(arr1[i]) > parseInt(arr2[i])) {
+        if (parseInt(arr1[i]) > parseInt(arr2[i])) {
             return 1;
+        } else if (parseInt(arr1[i]) < parseInt(arr2[i])) {
+            return -1;
         }
     }
 
     if (len1 > len2) {
-        for (var j = i; j <= len1; j++) {
+        for (var j = i; j < len1; j++) {
             if (parseInt(arr1[j]) > 0) {
                 return 1;
             }
         }
-    } else if (len1 < len2) {
-        for (var jj = i; jj <= len2; jj++) {
-            if (parseInt(arr2[jj]) > 0) {
+    }
+
+    if (len1 < len2) {
+        for (j = i; j < len2; j++) {
+            if (parseInt(arr2[j]) > 0) {
                 return -1;
             }
         }
     }
+
     return 0;
 };

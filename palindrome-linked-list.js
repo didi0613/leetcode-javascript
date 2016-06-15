@@ -9,20 +9,20 @@
  * @param {ListNode} head
  * @return {boolean}
  */
-var isPalindrome = function(head) {
+var isPalindrome = function (head) {
     var arr = [];
-    while(head) {
+    while (head) {
         arr.push(head.val);
         head = head.next;
     }
 
     var len = arr.length;
-    if(len <= 1){
+    if (len <= 1) {
         return true;
     } else {
-        var start=0,end=len-1;
-        while(start<end) {
-            if(arr[start] !== arr[end]) {
+        var start = 0, end = len - 1;
+        while (start < end) {
+            if (arr[start] !== arr[end]) {
                 return false;
             } else {
                 start++;

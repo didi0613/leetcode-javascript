@@ -18,8 +18,7 @@ var countPrimes = function (n) {
             k++;
         }
     }
-
-    // Also need to remove itself and 1
+    
     var ans = 0;
     for (var p = 2; p < n; p++) {
         if (!remove[p]) {

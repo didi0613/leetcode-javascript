@@ -11,3 +11,24 @@ var rotate = function (nums, k) {
         nums.unshift(tmp[i]);
     }
 };
+
+/*
+ * push(elem0, elem1, elem2, …) 向数组的末尾添加元素，并返回新的长度
+ * 
+ * pop() 删除数组中最后的一个元素，同时返回该元素
+ * 
+ * shift() 把数组的第一个元素从其中删除，并返回第一个元素的值
+ * 
+ * unshift(elem0, elem1, elem2, …) 向数组的开头添加一个或更多元素，并返回新的长度
+ * 
+ * splice(start, len, elem0, elem1, elem2, …) 从数组的start位置删除len个元素，
+ * 同时在该位置填充elem0, elem1等元素。如果elem为空，则直接进行删除，同时返回被删除的元素(array)
+ * 
+ * slice(start, len) 从数组的start位置删除len个元素，同时返回被删除的元素，而原数组不变
+ * 
+ * concat(array) 在数组的后面接上一个数组array，同时返回拼接完成的数组，而原数组不变
+ * 
+ * 
+ 从上面的各个方法中，我们能够看到，只能使用前面5个方法，最后2个方法不能修改原数组。
+ 因此现在的思路为：使用splice()得到最后的k个元素，然后使用unshift()把得到的数据一个个填充到数组的前面
+* */

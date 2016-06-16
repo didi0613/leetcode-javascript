@@ -9,6 +9,8 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
+// Solution 1
+// Recursive way
 var preorderTraversal = function (root) {
     var ret = [];
     preorderTraversalBuilder(root, ret);
@@ -24,3 +26,6 @@ function preorderTraversalBuilder(node, ret) {
     preorderTraversalBuilder(node.left, ret);
     preorderTraversalBuilder(node.right, ret);
 }
+
+// Solution 2
+// Iterative Way

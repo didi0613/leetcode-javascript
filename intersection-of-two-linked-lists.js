@@ -11,25 +11,25 @@
  * @param {ListNode} headB
  * @return {ListNode}
  */
-var getIntersectionNode = function(headA, headB) {
+var getIntersectionNode = function (headA, headB) {
     var lenA = 0, lenB = 0;
     var pa = headA;
     var pb = headB;
-    while(pa) {
+    while (pa) {
         lenA++;
         pa = pa.next;
     }
 
-    while(pb) {
+    while (pb) {
         lenB++;
         pb = pb.next;
     }
 
-    if(lenA >= lenB) {
+    if (lenA >= lenB) {
         var diff = lenA - lenB;
         pa = headA;
         pb = headB;
-        while(diff) {
+        while (diff) {
             pa = pa.next;
             diff--;
         }
@@ -37,13 +37,13 @@ var getIntersectionNode = function(headA, headB) {
         var diff2 = lenB - lenA;
         pa = headA;
         pb = headB;
-        while(diff2) {
+        while (diff2) {
             pb = pb.next;
             diff2--;
         }
     }
 
-    while(pa !== pb) {
+    while (pa !== pb) {
         pa = pa.next;
         pb = pb.next;
     }

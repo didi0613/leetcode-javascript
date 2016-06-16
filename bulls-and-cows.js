@@ -3,6 +3,7 @@
  * @param {string} guess
  * @return {string}
  */
+// Solution 1
 var getHint = function (secret, guess) {
     var nums_a = 0, nums_b = 0;
     var hash_a = [], hash_b = [];
@@ -36,4 +37,45 @@ var getHint = function (secret, guess) {
     }
 
     return nums_a + "A" + nums_b + "B";
+};
+
+// Solution 2
+/**
+ * @param {string} secret
+ * @param {string} guess
+ * @return {string}
+ */
+var getHint = function (secret, guess) {
+    var map = [];
+    for (var i in secret) {
+        if (map[secret[i]]) {
+            map[secret[i]]++;
+        } else {
+            map[secret[i]] = 1;
+        }
+    }
+
+    var bull = 0, cows = 0;
+    // check bull first
+    for (var j in guess) {
+        if (guess[j] === secret[j]) {
+            bull++;
+            map[guess[j]]--;
+
+            // Mark the paired position
+            var arr = guess.split('')
+            arr[j] = 'x';
+            guess = arr.join('');
+        }
+    }
+
+    // check cows
+    for (j in guess) {
+        if (map[guess[j]] > 0) {
+            cows++;
+            map[guess[j]]--;
+        }
+    }
+
+    return bull + "A" + cows + "B";
 };

@@ -34,3 +34,41 @@ var isIsomorphic = function (s, t) {
 
     return true;
 };
+
+// Concise solution
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isIsomorphic = function (s, t) {
+    var len1 = s.length, len2 = t.length;
+
+    // check the length
+    if (len1 !== len2) {
+        return false;
+    }
+
+    // mapping from s to t
+    if (!isomorphic([], len1, s, t) || !isomorphic([], len2, t, s)) {
+        return false;
+    }
+
+    return true;
+};
+
+function isomorphic(hash, len, s, t) {
+    var i = 0;
+    while (i < len) {
+        if (hash[s[i]]) {
+            if (hash[s[i]] !== t[i]) {
+                return false;
+            }
+        } else {
+            hash[s[i]] = t[i];
+        }
+        i++;
+    }
+
+    return true;
+}

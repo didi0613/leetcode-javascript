@@ -4,30 +4,18 @@
  * @return {number}
  */
 var myPow = function (x, n) {
-    if (x === 1) {
-        return 1;
+    if (n < 0) {
+        return 1.0 / myPow(x, -n);
     }
 
-    if (n >= 1) {
-        return calcPow(x, n);
-    } else {
-        return calcPow(1 / x, n * (-1));
+    if (n === 0) {
+        return 1.0;
     }
+
+    if (n === 1) {
+        return x;
+    }
+
+    var sub = myPow(x, parseInt(n / 2));
+    return sub * sub * myPow(x, n % 2);
 };
-
-function calcPow(x, n) {
-    var ret = 1;
-    for (var i = 0; i < n; i++) {
-        ret = ret * x;
-
-        if (x > Math.pow(2, 31) - 1) {
-            return 0;
-        }
-
-        if (x < Math.pow(2, 31) * (-1)) {
-            return 0;
-        }
-    }
-
-    return ret;
-}

@@ -14,10 +14,6 @@ var combine = function (n, k) {
 };
 
 function combineBuilder(n, k, ret, item, index) {
-    if (index > n) {
-        return;
-    }
-
     if (item.length === k) {
         ret.push(item.slice());
         return;

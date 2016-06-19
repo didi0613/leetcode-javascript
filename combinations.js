@@ -14,15 +14,18 @@ var combine = function (n, k) {
 };
 
 function combineBuilder(n, k, ret, item, index) {
+    if (index > n) {
+        return;
+    }
+
     if (item.length === k) {
         ret.push(item.slice());
         return;
     }
 
-    if (index < n) {
-        item.push(index + 1);
-        combineBuilder(n, k, ret, item, index + 1);
+    for (var i = index; i < n; i++) {
+        item.push(i + 1);
+        combineBuilder(n, k, ret, item, i + 1);
         item.pop();
-        combineBuilder(n, k, ret, item, index + 1);
     }
 }

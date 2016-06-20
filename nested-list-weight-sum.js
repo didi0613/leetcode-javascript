@@ -17,3 +17,7 @@ function depthSumBuilder(arr, level) {
 }
 
 console.log(depthSum());
+
+// DFS Solution
+// Time Complexity: O(n)
+// Space Complexity: O(n)

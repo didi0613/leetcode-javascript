@@ -9,7 +9,7 @@ function depthSumBuilder(arr, level) {
         if (Number.isInteger(arr[i])) {
             ret += arr[i] * level;
         } else {
-            return depthSumBuilder(arr[i], level + 1);
+            ret += depthSumBuilder(arr[i], level + 1);
         }
     }
 

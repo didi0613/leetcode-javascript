@@ -37,6 +37,8 @@ var NestedIterator = function (nestedList) {
             NestedIterator(nestedList[i]);
         }
     }
+
+    // Time Complexity: O(n)
 };
 
 
@@ -46,6 +48,7 @@ var NestedIterator = function (nestedList) {
  */
 NestedIterator.prototype.hasNext = function () {
     return stack.length > 0;
+    // Time Complexity: O(1)
 };
 
 /**
@@ -54,6 +57,7 @@ NestedIterator.prototype.hasNext = function () {
  */
 NestedIterator.prototype.next = function () {
     return stack.pop();
+    // Time Complexity: O(1)
 };
 
 /**

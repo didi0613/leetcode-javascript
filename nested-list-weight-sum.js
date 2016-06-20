@@ -1,4 +1,4 @@
-function test(){
+function depthSum(){
     var arr = [[1,1],2,[1,1]];
     return helper(arr,1);
 }
@@ -16,4 +16,4 @@ function helper(arr, level) {
     return ret;
 }
 
-console.log(test());
+console.log(depthSum());

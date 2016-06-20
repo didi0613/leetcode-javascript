@@ -44,3 +44,30 @@ var isValid = function (s) {
 
     return stack.length === 0;
 };
+
+// Solution 2
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function (s) {
+    var len = s.length;
+    if (len === 0) {
+        return true;
+    }
+
+    var hash = {'(': ')', '[': ']', '{': '}'};
+    var stack = [];
+    for (var i = 0; i < len; i++) {
+        if (s[i] in hash) {
+            stack.push(s[i]);
+        } else {
+            var tmp = stack.pop();
+            if (hash[tmp] !== s[i]) {
+                return false;
+            }
+        }
+    }
+
+    return stack.length === 0;
+};

@@ -9,6 +9,8 @@
 var bulbSwitch = function (n) {
     return Math.floor(Math.sqrt(n));
 };
+// Time Complexity: O(1)
+// Space Complexity: O(1)
 
 // Solution 2
 // Without using API

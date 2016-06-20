@@ -1,6 +1,6 @@
 function depthSum() {
     var arr = [[1, 1], 2, [1, 1]];
-    return helper(arr, 1);
+    return depthSumBuilder(arr, 1);
 }
 
 function depthSumBuilder(arr, level) {

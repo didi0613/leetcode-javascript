@@ -16,6 +16,9 @@ var rotate = function (nums, k) {
     }
 };
 
+// Time Complexity: O(k * n)
+// Space Complexity: O(1)
+
 /*
  * push(elem0, elem1, elem2, …) 向数组的末尾添加元素，并返回新的长度
  * 
@@ -68,3 +71,6 @@ function reverse(num, start, end) {
         end--;
     }
 }
+
+// Time Complexity: O(n)
+// Space Complexity: O(1)

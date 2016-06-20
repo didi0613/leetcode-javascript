@@ -21,7 +21,9 @@ var maxProduct = function (nums) {
             max[i] = Math.max(min[i - 1] * nums[i], nums[i]);
             min[i] = Math.min(max[i - 1] * nums[i], nums[i]);
         }
+
+        ret = Math.max(max[i], ret);
     }
 
-    return Math.max(max[i], ret);
+    return ret;
 };

@@ -27,3 +27,6 @@ var maxProduct = function (nums) {
 
     return ret;
 };
+
+// Time Complexity: O(n)
+// Space Complexity: O(n)

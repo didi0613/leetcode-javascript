@@ -36,3 +36,6 @@ var mergeTwoLists = function (l1, l2) {
 
     return ret;
 };
+
+// Time Complexity: O(m+n)
+// Space Complexity: O(m+n)

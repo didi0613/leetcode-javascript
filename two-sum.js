@@ -20,3 +20,38 @@ var twoSum = function (nums, target) {
 
     return ret;
 };
+
+// Solution
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function (nums, target) {
+    var len = nums.length;
+    if (len === 0) {
+        return [];
+    }
+
+    var ret = [];
+    var hash = {};
+
+    for (var i in nums) {
+        hash[target - nums[i]] = i;
+    }
+
+    for (var j = 0; j < len; j++) {
+        if (nums[j] in hash && parseInt(hash[nums[j]]) !== j) {
+            ret.push(j);
+            ret.push(parseInt(hash[nums[j]]));
+            break;
+        }
+    }
+
+    return ret;
+};

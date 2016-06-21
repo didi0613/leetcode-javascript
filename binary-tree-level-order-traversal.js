@@ -84,7 +84,11 @@ var levelOrder = function (root) {
     return ret;
 };
 
+// Time Complexity:
+// O(1) + O(2) + O(3) + ... + O(n) = O(n^2);
+
 // LinkedIn Follow up
+// Print with spaces
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -104,7 +108,7 @@ var levelOrder = function (root) {
     var last = [];
     var ret = [];
     last.push(root);
-    // var level = getHeight(root);
+    var level = getHeight(root);
 
     while (last.length > 0) {
         var current = [];
@@ -123,11 +127,11 @@ var levelOrder = function (root) {
         }
         ret.push(lastData);
 
-        // var str = "";
-        // for(var j in lastData) {
-        //      str += lastData[j] + " ";
-        // }
-        // console.log(new Array(level).join(' ') + str);
+        var str = "";
+        for(var j in lastData) {
+             str += lastData[j] + " ";
+        }
+        console.log(new Array(level).join(' ') + str);
 
         level--;
         last = current;
@@ -136,14 +140,14 @@ var levelOrder = function (root) {
     return ret;
 };
 
-// function getHeight(node) {
-//     if(node === null) {
-//         return 0;
-//     }
+function getHeight(node) {
+    if(node === null) {
+        return 0;
+    }
 
-//     if(node.left === null && node.right === null) {
-//         return 1;
-//     }
+    if(node.left === null && node.right === null) {
+        return 1;
+    }
 
-//     return Math.max(getHeight(node.left), getHeight(node.right)) + 1;
-// }
+    return Math.max(getHeight(node.left), getHeight(node.right)) + 1;
+}

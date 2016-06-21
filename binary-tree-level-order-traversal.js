@@ -83,3 +83,67 @@ var levelOrder = function (root) {
 
     return ret;
 };
+
+// LinkedIn Follow up
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+var levelOrder = function (root) {
+    if (root === null) {
+        return [];
+    }
+
+    var last = [];
+    var ret = [];
+    last.push(root);
+    // var level = getHeight(root);
+
+    while (last.length > 0) {
+        var current = [];
+        var lastData = [];
+
+        for (var i in last) {
+            lastData.push(last[i].val);
+
+            if (last[i].left) {
+                current.push(last[i].left);
+            }
+
+            if (last[i].right) {
+                current.push(last[i].right);
+            }
+        }
+        ret.push(lastData);
+
+        // var str = "";
+        // for(var j in lastData) {
+        //      str += lastData[j] + " ";
+        // }
+        // console.log(new Array(level).join(' ') + str);
+
+        level--;
+        last = current;
+    }
+
+    return ret;
+};
+
+// function getHeight(node) {
+//     if(node === null) {
+//         return 0;
+//     }
+
+//     if(node.left === null && node.right === null) {
+//         return 1;
+//     }
+
+//     return Math.max(getHeight(node.left), getHeight(node.right)) + 1;
+// }

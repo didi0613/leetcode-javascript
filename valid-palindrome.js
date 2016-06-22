@@ -57,6 +57,17 @@ var isPalindrome = function (s) {
     return true;
 };
 
+// solition 3
+// One line solution
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindrome = function (s) {
+    s = s.replace(/\W/g, '').toLowerCase();
+    return s === s.split('').reverse().join('');
+};
+
 /*
  * Summarize
  * \W

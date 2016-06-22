@@ -14,6 +14,8 @@ var bulbSwitch = function (n) {
 
 // Solution 2
 // Without using API
+// Time Complexity: O(n ^ 0.5)
+// Space Complexity: O(1)
 /**
  * @param {number} n
  * @return {number}

@@ -72,3 +72,4 @@ function isomorphic(hash, len, s, t) {
 
     return true;
 }
+// 时间 O(N) 空间 O(N)

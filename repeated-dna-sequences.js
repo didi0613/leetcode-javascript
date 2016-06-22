@@ -58,3 +58,5 @@ var findRepeatedDnaSequences = function (s) {
 
     return ret;
 };
+
+//时间 O(N) 空间 O(N)

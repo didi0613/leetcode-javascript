@@ -2,6 +2,7 @@
  * @param {string} s
  * @return {string[]}
  */
+// Improve using bit manipulation
 // This method will cause a time limit exceeded issue.
 var findRepeatedDnaSequences = function (s) {
     var len = s.length;

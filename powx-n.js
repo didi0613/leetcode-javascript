@@ -19,3 +19,5 @@ var myPow = function (x, n) {
     var sub = myPow(x, parseInt(n / 2));
     return sub * sub * myPow(x, n % 2);
 };
+
+//时间 O(logN) 空间 O(logN)

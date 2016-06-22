@@ -33,3 +33,27 @@ var findRepeatedDnaSequences = function (s) {
 
     return ret;
 };
+
+// Passed Solution
+/**
+ * @param {string} s
+ * @return {string[]}
+ */
+/**
+ * @param {string} s
+ * @return {string[]}
+ */
+var findRepeatedDnaSequences = function (s) {
+    var ret = [], sequenceMap = {};
+    for (var i = 10; i <= s.length; i++) {
+        var item = s.substring(i - 10, i);
+        if (sequenceMap[item] === 1) {
+            ret.push(item);
+            sequenceMap[item] = 2;
+        } else if (!sequenceMap[item]) {
+            sequenceMap[item] = 1;
+        }
+    }
+
+    return ret;
+};

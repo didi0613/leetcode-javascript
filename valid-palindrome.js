@@ -82,3 +82,6 @@ var isPalindrome = function (s) {
  m	Multi-line search.
  y	Perform a "sticky" search that matches starting at the current position in the target string. See sticky
  * */
+
+// Time Complexity: O(n)
+// Space Complexity: O(1)

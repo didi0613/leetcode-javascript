@@ -84,8 +84,8 @@ var levelOrder = function (root) {
     return ret;
 };
 
-// Time Complexity:
-// O(1) + O(2) + O(3) + ... + O(n) = O(n^2);
+//时间复杂度： O(N)
+//空间复杂度： O(w) where w is maximum width of Binary Tree.
 
 // LinkedIn Follow up
 // Print with spaces

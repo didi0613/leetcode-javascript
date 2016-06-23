@@ -50,3 +50,5 @@ var getIntersectionNode = function (headA, headB) {
 
     return pa;
 };
+
+// 时间 O(N) 空间 O(1)

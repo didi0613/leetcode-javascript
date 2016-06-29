@@ -4,6 +4,7 @@
  *   Note: wordDict is a Set object, see:
  *   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
  * @return {boolean}
+ * time: O(n^2), space: O(n)
  */
 var wordBreak = function (s, wordDict) {
     var len = s.length;

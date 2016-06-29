@@ -55,3 +55,5 @@ var lowestCommonAncestor = function (root, p, q) {
         return lowestCommonAncestor(root.right, p, q);
     }
 };
+
+// 时间 O(h) 空间 O(h) 递归栈空间

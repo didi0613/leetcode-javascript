@@ -11,6 +11,10 @@
  *
  * @param {TreeNode} root
  * @return {string}
+ * Serialization
+ * time: O(n), space: O(1)
+ * Deserialization
+ * time: O(n), space: O(n)
  */
 var serialize = function (root) {
     if (root === null) {

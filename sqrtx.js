@@ -1,6 +1,7 @@
 /**
  * @param {number} x
  * @return {number}
+ * time: O(logn), space: O(1)
  */
 var mySqrt = function (x) {
     var i = 1, j = x;

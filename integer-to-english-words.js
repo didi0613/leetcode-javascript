@@ -36,7 +36,7 @@ var numberToWords = function (num) {
     var dict2 = ["Thousand", "Million", "Billion"];
 
     if (num === 0) {
-        return num[0];
+        return dict[0];
     }
 
     var res = "";

@@ -63,3 +63,6 @@ function deserializeBuilder(q) {
 
     return root;
 }
+
+// Follow up: 如果tree的值是任意string该怎么办。
+// Ans: 就是加value的长度在value前面

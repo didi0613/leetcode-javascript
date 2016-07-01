@@ -16,10 +16,13 @@ var isMatch = function (s, p) {
         }
     } else {
         var i = 0;
-        while (i < s.length && (s[i] === p[0] || p[0] === '.')) {
+        do {
+            if (isMatch(s.substring(i), p.substring(2))) {
+                return true;
+            }
             i++;
-        }
+        } while (i <= s.length && (s[i - 1] === p[0] || p[0] === '.'));
 
-        return isMatch(s.substring(i), p.substring(1));
+        return false;
     }
 };

@@ -1,3 +1,59 @@
+//
+// Solution 1: Basic DFS
+//
+/**
+ * @param {character[][]} board
+ * @param {string[]} words
+ * @return {string[]}
+ */
+var findWords = function (board, words) {
+    var rowNum = board.length;
+    var colNum = board[0].length;
+
+    var ret = [];
+
+    // A two dimentional array
+    var visited = new Array(rowNum);
+    for (var k = 0; k < rowNum; k++) {
+        visited[k] = new Array(colNum);
+    }
+
+    for (var i = 0; i < rowNum; i++) {
+        for (var j = 0; j < colNum; j++) {
+            findWordsBuilder(board, i, j, ret, words, "", visited);
+        }
+    }
+    return ret;
+};
+
+function findWordsBuilder(board, i, j, ret, words, item, visited) {
+    var rowNum = board.length;
+    var colNum = board[0].length;
+
+    // the current node has already been visited
+    if (i < 0 || i >= rowNum || j < 0 || j >= colNum || visited[i][j]) {
+        return;
+    }
+
+    item += board[i][j];
+    visited[i][j] = true;
+
+    if (words.includes(item) && !ret.includes(item)) {
+        ret.push(item);
+    }
+
+    findWordsBuilder(board, i - 1, j, ret, words, item, visited);
+    findWordsBuilder(board, i + 1, j, ret, words, item, visited);
+    findWordsBuilder(board, i, j - 1, ret, words, item, visited);
+    findWordsBuilder(board, i, j + 1, ret, words, item, visited);
+
+    item.substring(0, item.length - 1);
+    visited[i][j] = false;
+}
+
+//
+// Solution 2: Trie + DFS
+//
 /**
  * @constructor
  * Initialize your data structure here.

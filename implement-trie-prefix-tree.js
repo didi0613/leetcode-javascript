@@ -19,7 +19,7 @@ var Trie = function () {
  * Inserts a word into the trie.
  */
 Trie.prototype.insert = function (word) {
-    var tree = this.root, i, curr, tmp;
+    var tree = this.root, i, curr;
     for (i = 0; i < word.length; i++) {
         curr = word[i];
         if (!tree[curr]) {

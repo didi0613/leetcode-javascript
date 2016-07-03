@@ -6,7 +6,7 @@ var TrieNode = function (key) {
     return {
         key: key,
         isWord: false
-    };
+    }
 };
 
 var Trie = function () {
@@ -19,13 +19,13 @@ var Trie = function () {
  * Inserts a word into the trie.
  */
 Trie.prototype.insert = function (word) {
-    var tree = this.root, i, curr;
-    for (i = 0; i < word.length; i++) {
-        curr = word[i];
-        if (!tree[curr]) {
-            tree[curr] = new TrieNode(curr);
+    var tree = this.root;
+    for (var i in word) {
+        var cur = word[i];
+        if (!tree[cur]) {
+            tree[cur] = new TrieNode(cur);
         }
-        tree = tree[curr];
+        tree = tree[cur];
     }
     tree.isWord = true;
 };
@@ -35,10 +35,9 @@ Trie.prototype.insert = function (word) {
  * @return {boolean}
  * Returns if the word is in the trie.
  */
-
 Trie.prototype.search = function (word) {
     var tree = this.root;
-    for (var i = 0; i < word.length; i++) {
+    for (var i in word) {
         if (!tree[word[i]]) {
             return false;
         }
@@ -59,7 +58,7 @@ Trie.prototype.search = function (word) {
  */
 Trie.prototype.startsWith = function (prefix) {
     var tree = this.root;
-    for (var i = 0; i < prefix.length; i++) {
+    for (var i in prefix) {
         if (!tree[prefix[i]]) {
             return false;
         }
@@ -67,3 +66,10 @@ Trie.prototype.startsWith = function (prefix) {
     }
     return true;
 };
+
+/**
+ * Your Trie object will be instantiated and called as such:
+ * var trie = new Trie();
+ * trie.insert("somestring");
+ * trie.search("key");
+ */

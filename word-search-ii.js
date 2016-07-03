@@ -122,7 +122,7 @@ function findWordsBuilder(ret, trie, visited, i, j, board, item) {
             }
         }
     }
-    item = item.substring(0, item.length - 1);
+    item = item.slice(0, -1);
     visited[i][j] = false;
 }
 

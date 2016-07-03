@@ -81,14 +81,17 @@ var findWords = function (board, words) {
         trie.insert(words[i]);
     }
 
+    var rowNum = board.length;
+    var colNum = board[0].length;
+
     // create two dimentional array of visited
-    var visited = new Array(board.length);
-    for (var j = 0; j < board.length; j++) {
-        visited[j] = new Array(board[0].length);
+    var visited = new Array(rowNum);
+    for (var j = 0; j < rowNum; j++) {
+        visited[j] = new Array(colNum);
     }
 
-    for (var m = 0; m < board.length; m++) {
-        for (var n = 0; n < board[0].length; n++) {
+    for (var m = 0; m < rowNum; m++) {
+        for (var n = 0; n < colNum; n++) {
             findWordsBuilder(ret, trie, visited, m, n, board, "");
         }
     }
@@ -97,39 +100,28 @@ var findWords = function (board, words) {
 };
 
 function findWordsBuilder(ret, trie, visited, i, j, board, item) {
+    if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || visited[i][j]) {
+        return;
+    }
+
     item += board[i][j];
+
+    if (!trie.startsWith(item)) {
+        return;
+    }
+
+    if (trie.search(item)) {
+        if (!ret.includes(item)) {
+            ret.push(item);
+        }
+    }
+
     visited[i][j] = true;
 
-    if (trie.startsWith(item)) {
-        // if item is already a word
-        if (trie.search(item)) {
-            if (!ret.includes(item)) {
-                ret.push(item.slice());
-            }
-        }
+    findWordsBuilder(ret, trie, visited, i - 1, j, board, item);
+    findWordsBuilder(ret, trie, visited, i + 1, j, board, item);
+    findWordsBuilder(ret, trie, visited, i, j - 1, board, item);
+    findWordsBuilder(ret, trie, visited, i, j + 1, board, item);
 
-        // if item is not a word yet, keep searching up right down left
-        var dirx = [0, 0, 1, -1];
-        var diry = [1, -1, 0, 0];
-        for (var k = 0; k < 4; k++) {
-            var newi = i + dirx[k];
-            var newj = j + diry[k];
-
-            if (isValid(newi, newj, board)) {
-                if (!visited[newi][newj]) {
-                    findWordsBuilder(ret, trie, visited, newi, newj, board, item);
-                }
-            }
-        }
-    }
-    item = item.slice(0, -1);
     visited[i][j] = false;
-}
-
-function isValid(x, y, board) {
-    if (x >= 0 && x < board.length && y >= 0 && y < board[0].length) {
-        return true;
-    } else {
-        return false;
-    }
 }

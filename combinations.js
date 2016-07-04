@@ -4,24 +4,21 @@
  * @return {number[][]}
  */
 var combine = function (n, k) {
-    if (n === 0 || k === 0) {
-        return [];
-    }
-
     var ret = [];
-    combineBuilder(n, k, ret, [], 0);
+    helper(n, k, ret, [], 1);
     return ret;
 };
 
-function combineBuilder(n, k, ret, item, index) {
-    if (item.length === k) {
+function helper(n, k, ret, item, index) {
+    if (k === item.length) {
         ret.push(item.slice());
-        return;
     }
 
-    for (var i = index; i < n; i++) {
-        item.push(i + 1);
-        combineBuilder(n, k, ret, item, i + 1);
-        item.pop();
+    for (var i = index; i <= n; i++) {
+        if (!item.includes(i)) {
+            item.push(i);
+            helper(n, k, ret, item, i + 1);
+            item.pop();
+        }
     }
 }

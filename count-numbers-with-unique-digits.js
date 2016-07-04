@@ -2,6 +2,7 @@
  * @param {number} n
  * @return {number}
  */
+// DP Solution
 var countNumbersWithUniqueDigits = function (n) {
     if (n === 0) {
         return 1;

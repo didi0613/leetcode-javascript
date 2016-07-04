@@ -35,19 +35,19 @@ function findWordsBuilder(board, i, j, ret, words, item, visited) {
         return;
     }
 
-    item += board[i][j];
-    visited[i][j] = true;
 
     if (words.includes(item) && !ret.includes(item)) {
         ret.push(item);
     }
+
+    item += board[i][j];
+    visited[i][j] = true;
 
     findWordsBuilder(board, i - 1, j, ret, words, item, visited);
     findWordsBuilder(board, i + 1, j, ret, words, item, visited);
     findWordsBuilder(board, i, j - 1, ret, words, item, visited);
     findWordsBuilder(board, i, j + 1, ret, words, item, visited);
 
-    item.substring(0, item.length - 1);
     visited[i][j] = false;
 }
 

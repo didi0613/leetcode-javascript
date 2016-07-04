@@ -20,6 +20,8 @@ function combinationSumBuilder(candidates, target, item, itemSum, index, ret) {
     itemSum += parseInt(candidates[index]);
 
     if (itemSum > target) {
+        item.pop();
+        itemSum -= parseInt(candidates[index]);
         return;
     }
 
@@ -27,7 +29,7 @@ function combinationSumBuilder(candidates, target, item, itemSum, index, ret) {
         ret.push(item.slice());
     }
 
-    for (var i = 0; i < candidates.length; i++) {
+    for (var i = index; i < candidates.length; i++) {
         combinationSumBuilder(candidates, target, item, itemSum, i, ret);
     }
 

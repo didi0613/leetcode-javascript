@@ -4,35 +4,23 @@
  * @return {number[][]}
  */
 var combinationSum = function (candidates, target) {
-    if (candidates.length === 0) {
-        return target === 0;
-    }
-
     var ret = [];
-    for (var start = 0; start < candidates.length; start++) {
-        combinationSumBuilder(candidates, target, [], 0, start, ret);
-    }
+    helper(candidates, target, 0, ret, []);
     return ret;
 };
 
-function combinationSumBuilder(candidates, target, item, itemSum, index, ret) {
-    item.push(candidates[index]);
-    itemSum += parseInt(candidates[index]);
-
-    if (itemSum > target) {
-        item.pop();
-        itemSum -= parseInt(candidates[index]);
+function helper(candidates, target, index, ret, item) {
+    if (target < 0) {
         return;
     }
 
-    if (itemSum === target && !ret.includes(item)) {
+    if (target === 0) {
         ret.push(item.slice());
     }
 
     for (var i = index; i < candidates.length; i++) {
-        combinationSumBuilder(candidates, target, item, itemSum, i, ret);
+        item.push(candidates[i]);
+        helper(candidates, target - candidates[i], i, ret, item);
+        item.pop();
     }
-
-    item.pop();
-    itemSum -= parseInt(candidates[index]);
 }

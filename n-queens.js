@@ -1,6 +1,7 @@
 /**
  * @param {number} n
  * @return {string[][]}
+ * 时间O(n!) 空间O(n)
  */
 var solveNQueens = function (n) {
     var ret = [];

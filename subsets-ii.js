@@ -2,6 +2,7 @@
  * @param {number[]} nums
  * @return {number[][]}
  * 时间O(2^n) 空间O(2^n)
+ * 子集数为2^n
  */
 var subsetsWithDup = function (nums) {
     var len = nums.length;

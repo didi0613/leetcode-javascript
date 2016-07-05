@@ -1,11 +1,13 @@
 /**
  * @param {string} s
  * @return {boolean}
+ * 时间复杂度O(n)
+ * 空间复杂度 O(n)
  */
 var isValid = function (s) {
     var stack = [];
     var len = s.length;
-    
+
     if (len % 2 === 1) {
         return false;
     }

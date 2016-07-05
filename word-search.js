@@ -2,6 +2,8 @@
  * @param {character[][]} board
  * @param {string} word
  * @return {boolean}
+ * 时间复杂度 m*n*m*n
+ * 空间复杂度 m*n
  */
 var exist = function (board, word) {
     if (word.length === 0) {

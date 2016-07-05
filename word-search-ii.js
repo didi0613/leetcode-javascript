@@ -5,6 +5,8 @@
  * @param {character[][]} board
  * @param {string[]} words
  * @return {string[]}
+ * Time Complexity: O(m*n*m*n)
+ * Space Complexity: O(m*n)
  */
 var findWords = function (board, words) {
     var rowNum = board.length;

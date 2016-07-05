@@ -2,6 +2,8 @@
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
  */
 var twoSum = function (nums, target) {
     var hash = [];

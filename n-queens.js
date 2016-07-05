@@ -8,33 +8,35 @@ var solveNQueens = function (n) {
         return ret;
     }
 
-    solveNQueensBuilder(n, ret, [], [], 0);
+    solveNQueensBuilder(n, ret, [], 0, []);
     return ret;
 };
 
-function solveNQueensBuilder(n, ret, item, visited, irow) {
+function solveNQueensBuilder(n, ret, item, irow, visited) {
     if (irow === n) {
         ret.push(item.slice());
         return;
     }
 
-    for (var i = 0; i < n; i++) {
-        if (validQueen(visited, irow, i)) {
+    for (var j = 0; j < n; j++) {
+        if (isValid(visited, irow, j)) {
             var temp = new Array(n);
             temp.fill('.');
-            temp[i] = 'Q';
+            temp[j] = 'Q';
             item.push(temp.join(''));
-            visited.push(i);
-            solveNQueensBuilder(n, ret, item, visited, irow + 1);
+            visited.push(j);
+            solveNQueensBuilder(n, ret, item, irow + 1, visited);
             visited.pop();
             item.pop();
         }
     }
 }
 
-function validQueen(visited, irow, i) {
-    for (j = 0; j < visited.length; j++) {
-        if (visited[j] === i || (irow - j) === Math.abs(i - visited[j])) {
+function isValid(visited, irow, j) {
+    // the newly added point is (irow, j)
+    for (var k = 0; k < visited.length; k++) {
+        //board第k行的Queen放在visited[k]的位置上, 坐标(k,visited[k])
+        if (visited[k] === j || (irow - k) === Math.abs(j - visited[k])) {
             return false;
         }
     }

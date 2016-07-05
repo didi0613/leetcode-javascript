@@ -48,21 +48,21 @@ var mySqrt = function (x) {
  * @param {number} x
  * @return {number}
  */
-var mySqrt = function(x) {
-    var start = 1, end = Math.floor(x/2);
+var mySqrt = function (x) {
+    var start = 1, end = Math.floor(x / 2);
 
-    while(start <= end) {
-        var mid = Math.floor((start+end)/2);
-        if(mid * mid < x) {
-            if((mid+1) * (mid+1) > x) {
+    while (start <= end) {
+        var mid = Math.floor((start + end) / 2);
+        if (mid * mid < x) {
+            if ((mid + 1) * (mid + 1) > x) {
                 return mid;
-            } else if((mid+1) * (mid+1) === x) {
-                return mid+1;
+            } else if ((mid + 1) * (mid + 1) === x) {
+                return mid + 1;
             } else {
-                start = mid+1;
+                start = mid + 1;
             }
         } else {
-            end = mid-1;
+            end = mid - 1;
         }
     }
 

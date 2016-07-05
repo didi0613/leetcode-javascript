@@ -4,12 +4,9 @@
  */
 var isValid = function (s) {
     var stack = [];
-
     var len = s.length;
-    if (len === 0) {
-        return true;
-    }
-    if (len === 1) {
+    
+    if (len % 2 === 1) {
         return false;
     }
 

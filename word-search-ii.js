@@ -1,5 +1,5 @@
 //
-// Solution 1: Basic DFS
+// Solution 1: DFS
 //
 /**
  * @param {character[][]} board

@@ -29,11 +29,6 @@ var twoSum = function (nums, target) {
  * @param {number} target
  * @return {number[]}
  */
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
 var twoSum = function (nums, target) {
     var len = nums.length;
     if (len === 0) {

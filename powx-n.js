@@ -2,6 +2,7 @@
  * @param {number} x
  * @param {number} n
  * @return {number}
+ * 时间 O(logN) 空间 O(logN)
  */
 var myPow = function (x, n) {
     if (n < 0) {
@@ -19,5 +20,3 @@ var myPow = function (x, n) {
     var sub = myPow(x, parseInt(n / 2));
     return sub * sub * myPow(x, n % 2);
 };
-
-//时间 O(logN) 空间 O(logN)

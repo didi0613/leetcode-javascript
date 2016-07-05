@@ -55,3 +55,52 @@ var isMatch = function (s, p) {
  所以条件之一便是dp[i - 1][j] == true，另外一个条件便是s的最后一个字符必须匹配p的'*'前面的字符，
  所以得到dp[i][j] = dp[i -1][j] && (p.charAt(j - 2) == s.charAt(i - 1) || p.charAt(j - 2) == '.'
  */
+
+/**
+ * @param {string} s
+ * @param {string} p
+ * @return {boolean}
+ * time: O(n^2), space: O(n^2)
+ */
+var isMatch = function (s, p) {
+    var slen = s.length;
+    var plen = p.length;
+    var dp = new Array(slen + 1);
+    for (var i = 0; i <= slen; i++) {
+        dp[i] = new Array(plen + 1);
+    }
+
+    // initialization
+    dp[0][0] = true;
+    for (var k = 1; k <= slen; k++) {
+        dp[k][0] = false;
+    }
+
+    // 所有的dp[0][j]只需考虑p的最后一个字符是'*'的情况
+    for (var j = 1; j <= plen; j++) {
+        if (j > 1 && p[j - 1] == '*') {
+            dp[0][j] = dp[0][j - 1] || dp[0][j - 2];
+        }
+    }
+
+    // formula
+    for (i = 1; i <= slen; i++) {
+        for (j = 1; j <= plen; j++) {
+            if (p[j - 1] == '.') {
+                dp[i][j] = dp[i - 1][j - 1];
+            } else if (p[j - 1] == '*') {
+                // match *
+                // dismiss itself and/or previous character
+                if (dp[i][j - 2] || dp[i][j - 1]) {
+                    dp[i][j] = true;
+                } else if (dp[i - 1][j] && (p[j - 2] == s[i - 1] || p[j - 2] == '.')) {
+                    dp[i][j] = true;
+                }
+            } else if (dp[i - 1][j - 1] && s[i - 1] == p[j - 1]) {
+                dp[i][j] = true;
+            }
+        }
+    }
+
+    return !!dp[slen][plen];
+};

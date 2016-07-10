@@ -38,12 +38,7 @@ var serialize = function (root) {
  */
 var deserialize = function (data) {
     var arr = data.split(",");
-    var q = [];
-    for (var i in arr) {
-        q.unshift(arr[i]);
-    }
-
-    return deserializeBuilder(q);
+    return deserializeBuilder(arr.reverse());
 };
 
 /**
@@ -63,6 +58,3 @@ function deserializeBuilder(q) {
 
     return root;
 }
-
-// Follow up: 如果tree的值是任意string该怎么办。
-// Ans: 就是加value的长度在value前面

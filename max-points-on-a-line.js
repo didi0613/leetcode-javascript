@@ -12,7 +12,7 @@
 var maxPoints = function (points) {
     var len = points.length;
     var ret = 1;
-    var ratio = Number.MAX_VALUE;
+    var ratio = 0;
 
     if (len === 0) {
         return 0;
@@ -21,13 +21,14 @@ var maxPoints = function (points) {
     for (var i = 0; i < len; i++) {
         var same = 0;
         var hashmap = {};
+        var localMax = 1;
 
         for (var j = i + 1; j < len; j++) {
             if (points[j].y === points[i].y && points[j].x === points[i].x) {
                 same++;
                 continue;
             } else if (points[j].x === points[i].x) {
-                continue;
+                ratio = Number.MAX_VALUE;
             } else if (points[j].y === points[i].y) {
                 ratio = 0;
             } else {
@@ -41,7 +42,6 @@ var maxPoints = function (points) {
             }
         }
 
-        var localMax = Number.MIN_VALUE;
         for (var k in hashmap) {
             localMax = Math.max(localMax, hashmap[k]);
         }

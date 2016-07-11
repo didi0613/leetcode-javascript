@@ -3,7 +3,7 @@
  * @return {number}
  */
 var myAtoi = function (str) {
-    if (Number.isInteger(parseInt(str))) {
+    if (!isNaN(parseInt(str))) {
         if (parseInt(str) > Math.pow(2, 31) - 1) {
             return Math.pow(2, 31) - 1;
         } else if (parseInt(str) < Math.pow(2, 31) * (-1)) {

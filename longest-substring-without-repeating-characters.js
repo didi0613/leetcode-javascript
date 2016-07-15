@@ -8,18 +8,22 @@ var lengthOfLongestSubstring = function (s) {
         return 0;
     }
     var ret = 0;
-    var local = 0;
+    var start = 0, end = 0;
     var hashmap = {};
 
-    for (var i in s) {
-        if (s[i] in hashmap) {
-            local = 1;
+    while (end < len) {
+        if (hashmap[s[end]]) {
+            while (hashmap[s[end]]) {
+                hashmap[s[start]] = false;
+                start++;
+            }
+            hashmap[s[end]] = true;
+            end++;
         } else {
-            hashmap[s[i]] = true;
-            local++;
-            ret = Math.max(local, ret);
+            hashmap[s[end]] = true;
+            ret = Math.max(ret, end - start + 1);
+            end++;
         }
     }
-
     return ret;
 };

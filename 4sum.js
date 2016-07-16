@@ -5,13 +5,15 @@
  */
 var fourSum = function (nums, target) {
     var ret = [];
-    nums.sort();
+    nums.sort(function (a, b) {
+        return a - b;
+    });
     for (var i = 0; i <= nums.length - 4; i++) {
         if (i > 0 && nums[i] === nums[i - 1]) {
             continue;
         }
         for (var j = i + 1; j <= nums.length - 3; j++) {
-            if (nums[j] === nums[j - 1]) {
+            if (j > i + 1 && nums[j] === nums[j - 1]) {
                 continue;
             }
             fourSumBuilder(nums, target - nums[i] - nums[j], i, j, ret);

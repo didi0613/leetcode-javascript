@@ -4,6 +4,7 @@
  */
 var threeSum = function (nums) {
     nums.sort(function (a, b) {
+        // ascending order
         return a - b;
     });
     var ret = [];

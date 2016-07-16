@@ -8,7 +8,7 @@ var letterCombinations = function (digits) {
         7: ["p", "q", "r", "s"], 8: ["t", "u", "v"], 9: ["w", "x", "y", "z"]
     };
     var ret = [];
-    for (var i = 0; i < digits; i++) {
+    for (var i = 0; i < digits.length; i++) {
         if (digits[i] in hashmap) {
             if (ret.length === 0) {
                 ret = hashmap[digits[i]];
@@ -17,11 +17,10 @@ var letterCombinations = function (digits) {
 
             // insert into each of the characters in ret
             var nextLevel = [];
-            while (ret.length > 0) {
-                var item = ret.pop();
+            for (var j = 0; j < ret.length; j++) {
                 // loop each character in digits
                 for (var k = 0; k < hashmap[digits[i]].length; k++) {
-                    var tmp = item + hashmap[digits[i]][k];
+                    var tmp = ret[j] + hashmap[digits[i]][k];
                     nextLevel.push(tmp);
                 }
             }

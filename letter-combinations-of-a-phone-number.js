@@ -11,19 +11,21 @@ var letterCombinations = function (digits) {
     for (var i = 0; i < digits; i++) {
         if (digits[i] in hashmap) {
             if (ret.length === 0) {
-                ret.push(hashmap[digits[i]]);
+                ret = hashmap[digits[i]];
                 continue;
             }
 
             // insert into each of the characters in ret
-            for (var j = 0; j < ret.length; j++) {
+            var nextLevel = [];
+            while (ret.length > 0) {
                 var item = ret.pop();
                 // loop each character in digits
                 for (var k = 0; k < hashmap[digits[i]].length; k++) {
                     var tmp = item + hashmap[digits[i]][k];
-                    ret.push(tmp);
+                    nextLevel.push(tmp);
                 }
             }
+            ret = nextLevel;
         }
     }
 

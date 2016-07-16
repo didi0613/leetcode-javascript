@@ -13,20 +13,30 @@ var threeSum = function (nums) {
             continue;
         }
 
-        threeSumBuilder(nums, i + 1, 0 - nums[i], ret);
+        threeSumBuilder(nums, i, 0 - nums[i], ret);
     }
     return ret;
 };
 
-function threeSumBuilder(nums, start, target, ret) {
-    var hashmap = {};
-
-    for (var i = start; i < nums.length; i++) {
-        if (nums[i] in hashmap) {
-            var item = [nums[start], nums[hashmap[nums[i]]], nums[i]];
+function threeSumBuilder(nums, i, target, ret) {
+    var left = i + 1, right = nums.length - 1;
+    while (left < right) {
+        if (nums[left] + nums[right] === target) {
+            var item = [nums[i], nums[left], nums[right]];
             ret.push(item);
+
+            left++;
+            right--;
+            while (left < nums.length && nums[left] === nums[left - 1]) {
+                left++;
+            }
+            while (right >= 0 && nums[right] === nums[right + 1]) {
+                right++;
+            }
+        } else if (nums[left] + nums[right] > target) {
+            right--;
         } else {
-            hashmap[target - nums[i]] = i;
+            left++;
         }
     }
 }

@@ -65,42 +65,45 @@ var isMatch = function (s, p) {
 var isMatch = function (s, p) {
     var slen = s.length;
     var plen = p.length;
+
+    // create a dp[][]
+    // dp[i][j]: s[0 ~ i-1] matches p[0 ~ j-1]
+    // Ans: dp[slen+1][plen+1]
     var dp = new Array(slen + 1);
-    for (var i = 0; i <= slen; i++) {
+    for (var i = 0; i < slen + 1; i++) {
         dp[i] = new Array(plen + 1);
+        dp[i].fill(false);
     }
 
     // initialization
     dp[0][0] = true;
-    for (var k = 1; k <= slen; k++) {
-        dp[k][0] = false;
+    for (i = 1; i <= slen; i++) {
+        dp[i][0] = false;
     }
-
-    // 所有的dp[0][j]只需考虑p的最后一个字符是'*'的情况
-    for (var j = 1; j <= plen; j++) {
-        if (j > 1 && p[j - 1] == '*') {
-            dp[0][j] = dp[0][j - 1] || dp[0][j - 2];
+    for (i = 1; i <= plen; i++) {
+        if (i > 1 && p[i - 1] === '*') {
+            dp[0][i] = dp[0][i - 1] || dp[0][i - 2];
         }
     }
 
     // formula
     for (i = 1; i <= slen; i++) {
-        for (j = 1; j <= plen; j++) {
-            if (p[j - 1] == '.') {
-                dp[i][j] = dp[i - 1][j - 1];
-            } else if (p[j - 1] == '*') {
-                // match *
-                // dismiss itself and/or previous character
-                if (dp[i][j - 2] || dp[i][j - 1]) {
+        for (var j = 1; j <= plen; j++) {
+            if (p[j - 1] === '*') {
+                if (dp[i][j - 1] || dp[i][j - 2]) {
+                    // match none or one character before *
                     dp[i][j] = true;
-                } else if (dp[i - 1][j] && (p[j - 2] == s[i - 1] || p[j - 2] == '.')) {
+                } else if (dp[i - 1][j] && (s[i - 1] === p[j - 2] || p[j - 2] === '.')) {
+                    // match multi for one character before *
                     dp[i][j] = true;
                 }
-            } else if (dp[i - 1][j - 1] && s[i - 1] == p[j - 1]) {
+            } else if (p[j - 1] === '.') {
+                dp[i][j] = dp[i - 1][j - 1];
+            } else if (dp[i - 1][j - 1] && s[i - 1] === p[j - 1]) {
                 dp[i][j] = true;
             }
         }
     }
 
-    return !!dp[slen][plen];
+    return dp[slen][plen];
 };

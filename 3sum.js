@@ -3,7 +3,9 @@
  * @return {number[][]}]
  */
 var threeSum = function (nums) {
-    nums.sort();
+    nums.sort(function (a, b) {
+        return a - b;
+    });
     var ret = [];
     var len = nums.length;
 
@@ -12,7 +14,6 @@ var threeSum = function (nums) {
         if (i > 0 && nums[i - 1] === nums[i]) {
             continue;
         }
-
         threeSumBuilder(nums, i, 0 - nums[i], ret);
     }
     return ret;
@@ -26,12 +27,12 @@ function threeSumBuilder(nums, i, target, ret) {
             ret.push(item);
 
             left++;
-            right--;
             while (left < nums.length && nums[left] === nums[left - 1]) {
                 left++;
             }
+            right--;
             while (right >= 0 && nums[right] === nums[right + 1]) {
-                right++;
+                right--;
             }
         } else if (nums[left] + nums[right] > target) {
             right--;

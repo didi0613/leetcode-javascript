@@ -1,4 +1,3 @@
-// Solution 1
 /**
  * Definition for singly-linked list.
  * function ListNode(val) {
@@ -12,63 +11,20 @@
  * @return {ListNode}
  */
 var removeNthFromEnd = function (head, n) {
-    var runner = head;
-    var mark = [];
-    var len = 0;
+    var dummy = new ListNode(-1);
+    dummy.next = head;
+    var p1 = dummy, p2 = dummy;
 
-    while (runner !== null) {
-        mark[len] = runner;
-        runner = runner.next;
-        len++;
+    while (n-- > 0) {
+        p1 = p1.next;
     }
 
-    // The one we will remove mark[len-n]
-    if (len - n === 0) {
-        return head.next;
-    } else {
-        mark[len - n - 1].next = mark[len - n].next;
-        return head;
+    while (p1.next !== null) {
+        p1 = p1.next;
+        p2 = p2.next;
     }
 
-};
+    p2.next = p2.next.next;
 
-// solution 2
-/**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
-/**
- * @param {ListNode} head
- * @param {number} n
- * @return {ListNode}
- */
-var removeNthFromEnd = function (head, n) {
-    // Create two pointers.
-    // Make them depart n distance
-
-    if (head.next === null || head === null) {
-        return null;
-    }
-
-    var slow = head, fast = head;
-    while (n > 0) {
-        fast = fast.next;
-        n--;
-    }
-
-    // Remove head situation
-    if (fast === null) {
-        return head.next;
-    }
-
-    while (fast.next !== null) {
-        slow = slow.next;
-        fast = fast.next;
-    }
-
-    slow.next = slow.next.next;
-    return head;
+    return dummy.next;
 };

@@ -7,9 +7,12 @@
  */
 /**
  * @param {Interval[]} intervals
+ * @param {Interval} newInterval
  * @return {Interval[]}
  */
-var merge = function (intervals) {
+var insert = function (intervals, newInterval) {
+    intervals.push(newInterval);
+
     intervals.sort(function (a, b) {
         if (a.start === b.start) {
             return a.end - b.end;

@@ -7,7 +7,6 @@ var spiralOrder = function (matrix) {
     if (matrix.length === 0) {
         return ret;
     }
-
     var rowBegin = 0, rowEnd = matrix.length - 1;
     var colBegin = 0, colEnd = matrix[0].length - 1;
 
@@ -24,6 +23,7 @@ var spiralOrder = function (matrix) {
         }
         colEnd--;
 
+        // check whether the row or col still exists to prevent duplicates
         if (rowBegin <= rowEnd) {
             // Traverse Left
             for (j = colEnd; j >= colBegin; j--) {
@@ -32,6 +32,7 @@ var spiralOrder = function (matrix) {
         }
         rowEnd--;
 
+        // check whether the row or col still exists to prevent duplicates
         if (colBegin <= colEnd) {
             // Traver Up
             for (j = rowEnd; j >= rowBegin; j--) {

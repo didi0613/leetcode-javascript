@@ -8,8 +8,9 @@
  * 就是可以跳到。
  */
 var canJump = function (nums) {
-    var max = 0, i = 0;
-    for (i = 0; i <= max && i < nums.length; i++) {
+    // index 0 ~ i的范围里可以跳到最远的index
+    var max = 0;
+    for (var i = 0; i <= max && i < nums.length; i++) {
         max = Math.max(max, nums[i] + i);
     }
     return i == nums.length;

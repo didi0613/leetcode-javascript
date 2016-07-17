@@ -11,5 +11,15 @@
  * 直到上界超过终点时为之。
  */
 var jump = function (nums) {
-
+    var low = 0, high = 0, len = nums.length;
+    var step = 0;
+    while (high < len - 1) {
+        step++;
+        var curHigh = high;
+        for (var i = low; i <= curHigh; i++) {
+            high = Math.max(high, nums[i] + i);
+        }
+        low = curHigh + 1;
+    }
+    return step;
 };

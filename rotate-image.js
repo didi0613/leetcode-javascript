@@ -4,20 +4,12 @@
  */
 var rotate = function (matrix) {
     var n = matrix.length;
-    for (var i = 0; i < parseInt(n / 2); i++) {
-        for (var j = i; j < n - i - 1; j++) {
-            // 左上和左下交换
-            swap(matrix, i, j, j, n - i - 1);
-            // 左上和右下交换
-            swap(matrix, i, j, n - i - 1, n - j - 1);
-            // 左上和右上交换
-            swap(matrix, i, j, n - j - 1, i);
+    for (var i = 0; i < n / 2; ++i)
+        for (var j = i; j < n - 1 - i; ++j) {
+            var t = matrix[i][j];
+            matrix[i][j] = matrix[n - 1 - j][i];
+            matrix[n - 1 - j][i] = matrix[n - 1 - i][n - 1 - j];
+            matrix[n - 1 - i][n - 1 - j] = matrix[j][n - 1 - i];
+            matrix[j][n - 1 - i] = t;
         }
-    }
 };
-
-function swap(matrix, i, j, x, y) {
-    var tmp = matrix[i][j];
-    matrix[i][j] = matrix[x][y];
-    matrix[x][y] = tmp;
-}

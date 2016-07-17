@@ -19,10 +19,12 @@ var longestValidParentheses = function (s) {
                     ret = Math.max(ret, i - left + 1);
                 } else {
                     // 说明当前还在连续匹配串内，从当前栈顶元素索引开始计算长度即可
+                    // stack[stack.length-1] 是即将要匹配的“(”的index
                     ret = Math.max(ret, i - stack[stack.length - 1]);
                 }
             } else {
                 //当前匹配失效,且不是起始索引,移动起始索引
+                // 只有在匹配失效之后，才重新选取起始位置
                 left = i + 1;
             }
         }

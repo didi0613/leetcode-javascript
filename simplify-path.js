@@ -15,8 +15,6 @@ var simplifyPath = function (path) {
         if (path_arr[i] === '..') {
             if (stack.length > 0) {
                 stack.pop();
-            } else {
-                break;
             }
         } else if (path_arr[i] === "." || path_arr[i].length === 0) {
             continue;

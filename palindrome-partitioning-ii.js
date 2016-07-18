@@ -1,11 +1,26 @@
 /**
  * @param {string} s
  * @return {number}
- * 本题的思路是：
- * 建立boolean二维数组dp[i][j]，存放字符串s从第i到第j位是否为回文的布尔值；
- * 同时建立整型数组min[i]，存放从最后一位到第i位都是回文串的最小切割次数。
- * 然后从字符串s的最后一个字符开始，向前进行分析。
  */
 var minCut = function (s) {
+    var c = s.split('');
+    var n = c.length;
+    var cut = new Array(n);
+    var pal = new Array(n);
+    for (var i = 0; i < n; i++) {
+        pal[i] = new Array(n);
+        pal[i].fill(0);
+    }
 
+    for (var i = 0; i < n; i++) {
+        var min = i;
+        for (var j = 0; j <= i; j++) {
+            if (c[j] == c[i] && (j + 1 > i - 1 || pal[j + 1][i - 1])) {
+                pal[j][i] = true;
+                min = j == 0 ? 0 : Math.min(min, cut[j - 1] + 1);
+            }
+        }
+        cut[i] = min;
+    }
+    return cut[n - 1];
 };

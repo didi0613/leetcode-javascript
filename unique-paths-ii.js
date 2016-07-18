@@ -8,7 +8,7 @@ var uniquePathsWithObstacles = function (obstacleGrid) {
     var dp = new Array(m);
     for (var i = 0; i < m; i++) {
         dp[i] = new Array(n);
-        dp[i].fill(1);
+        dp[i].fill(0);
     }
 
     //initialization

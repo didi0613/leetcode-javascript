@@ -13,3 +13,39 @@
 
  对于left和right的构造算法复杂度都是O(n)。
  * */
+
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function (prices) {
+    if (prices == null || prices.length == 0)
+        return 0;
+    var max = 0;
+    var left = new Array(prices.length);
+    left.fill(0);
+    var right = new Array(prices.length);
+    right.fill(0);
+    var minPrice = prices[0];
+    for (var i = 1; i < prices.length; i++) {
+        if (minPrice < prices[i]) {
+            left[i] = Math.max(left[i - 1], prices[i] - minPrice);
+        } else {
+            left[i] = left[i - 1];
+            minPrice = prices[i];
+        }
+    }
+    var maxPrice = prices[prices.length - 1];
+    for (var i = prices.length - 2; i >= 0; i--) {
+        if (prices[i] < maxPrice) {
+            right[i] = Math.max(right[i + 1], maxPrice - prices[i]);
+        } else {
+            right[i] = right[i + 1];
+            maxPrice = prices[i];
+        }
+    }
+    for (var i = 0; i < prices.length; i++) {
+        max = Math.max(max, left[i] + right[i]);
+    }
+    return max;
+};

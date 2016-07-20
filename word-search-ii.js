@@ -1,5 +1,6 @@
 //
 // Solution 1: DFS
+// Time Limit Exceeded
 //
 /**
  * @param {character[][]} board
@@ -17,7 +18,7 @@ var findWords = function (board, words) {
     // A two dimentional array
     var visited = new Array(rowNum);
     for (var k = 0; k < rowNum; k++) {
-        visited[k] = new Array(colNum);
+        visited[k] = new Array(colNum).fill(false);
     }
 
     for (var i = 0; i < rowNum; i++) {
@@ -32,23 +33,25 @@ function findWordsBuilder(board, i, j, ret, words, item, visited) {
     var rowNum = board.length;
     var colNum = board[0].length;
 
-    // the current node has already been visited
-    if (i < 0 || i >= rowNum || j < 0 || j >= colNum || visited[i][j]) {
-        return;
-    }
-
+    item += board[i][j];
+    visited[i][j] = true;
 
     if (words.includes(item) && !ret.includes(item)) {
         ret.push(item);
     }
 
-    item += board[i][j];
-    visited[i][j] = true;
-
-    findWordsBuilder(board, i - 1, j, ret, words, item, visited);
-    findWordsBuilder(board, i + 1, j, ret, words, item, visited);
-    findWordsBuilder(board, i, j - 1, ret, words, item, visited);
-    findWordsBuilder(board, i, j + 1, ret, words, item, visited);
+    if (i > 0 && !visited[i - 1][j]) {
+        findWordsBuilder(board, i - 1, j, ret, words, item, visited);
+    }
+    if (i < rowNum - 1 && !visited[i + 1][j]) {
+        findWordsBuilder(board, i + 1, j, ret, words, item, visited);
+    }
+    if (j > 0 && !visited[i][j - 1]) {
+        findWordsBuilder(board, i, j - 1, ret, words, item, visited);
+    }
+    if (j < colNum - 1 && !visited[i][j + 1]) {
+        findWordsBuilder(board, i, j + 1, ret, words, item, visited);
+    }
 
     visited[i][j] = false;
 }

@@ -26,6 +26,3 @@ function preorderTraversalBuilder(node, ret) {
     preorderTraversalBuilder(node.left, ret);
     preorderTraversalBuilder(node.right, ret);
 }
-
-// Solution 2
-// Iterative Way

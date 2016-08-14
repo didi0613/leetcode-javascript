@@ -7,6 +7,8 @@ var coinChange = function (coins, amount) {
     // dp[i]:兑换目标i的最少硬币数
     // dp[i] = Math.min(dp[i], dp[i-coins[j]]+1);
 
+    // 硬币组合个数不可能大于amount，因此若某下标的元素值
+    // 为amount + 1说明无法用coins里的硬币组合出该下标
     var dp = new Array(amount + 1).fill(amount + 1);
     dp[0] = 0;
 

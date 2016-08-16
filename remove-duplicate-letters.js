@@ -7,20 +7,26 @@ var removeDuplicateLetters = function (s) {
         return s;
     }
 
-    var hashmap = new Array(26).fill(0);
+    // Add all the characters' frequency in hashmap
+    var hashmap = {};
     for (var i = 0; i < s.length; i++) {
-        hashmap[s[i]]++;
+        if (hashmap[s[i]]) {
+            hashmap[s[i]]++;
+        } else {
+            hashmap[s[i]] = 1;
+        }
     }
 
-    var visited = new Array(26).fill(false);
+    // maintain a stack to get the smallest on top
     var stack = [];
+    var visited = {};
     for (var i = 0; i < s.length; i++) {
         hashmap[s[i]]--;
         if (visited[s[i]]) {
             continue;
         }
 
-        while (stack.length > 0 && stack[stack.length - 1] > s[i] && hashmap[stack[stack.length - 1]] > 0) {
+        while (s[i] < stack[stack.length - 1] && hashmap[stack[stack.length - 1]] > 0) {
             visited[stack[stack.length - 1]] = false;
             stack.pop();
         }

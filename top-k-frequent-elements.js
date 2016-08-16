@@ -34,7 +34,8 @@ var topKFrequent = function (nums, k) {
 
     // get the top k answer
     for (i = len, j = 0; k > 0; k--) {
-        for (; !freqHashmap[i] || j === freqHashmap[i].length; j = 0, i--);
+        // 如果当前的i在freqHashmap[i]中已经遍历完了，则进入到下一个i
+        for (; !freqHashmap[i] || freqHashmap[i].length === j; j = 0, i--);
         ret.push(parseInt(freqHashmap[i][j++]));
     }
 

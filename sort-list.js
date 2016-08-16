@@ -51,7 +51,7 @@ var merge = function (node1, node2) {
         cur.next = node1;
     }
 
-    if (node1) {
+    if (node2) {
         cur.next = node2;
     }
 

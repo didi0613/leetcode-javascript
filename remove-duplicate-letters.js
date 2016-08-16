@@ -7,13 +7,9 @@ var removeDuplicateLetters = function (s) {
         return s;
     }
 
-    var hashmap = new Array(26);
+    var hashmap = new Array(26).fill(0);
     for (var i = 0; i < s.length; i++) {
-        if (hashmap[s[i]]) {
-            hashmap[s[i]]++;
-        } else {
-            hashmap[s[i]] = 1;
-        }
+        hashmap[s[i]]++;
     }
 
     var visited = new Array(26).fill(false);
@@ -24,8 +20,8 @@ var removeDuplicateLetters = function (s) {
             continue;
         }
 
-        while (stack.length > 0 && stack[0] > s[i] && hashmap[s[i]] > 0) {
-            visited[stack[0]] = false;
+        while (stack.length > 0 && stack[stack.length - 1] > s[i] && hashmap[stack[stack.length - 1]] > 0) {
+            visited[stack[stack.length - 1]] = false;
             stack.pop();
         }
         stack.push(s[i]);

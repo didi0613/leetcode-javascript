@@ -91,3 +91,58 @@ var isSymmetric = function (root) {
 
     return true;
 };
+
+// Solution 3
+// Two queues implementation
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isSymmetric = function (root) {
+    if (root === null) {
+        return true;
+    }
+
+    if (root.left === null && root.right === null) {
+        return true;
+    }
+
+    if (root.left === null || root.right === null) {
+        return false;
+    }
+
+    var q1 = [], q2 = [];
+    q1.unshift(root.left);
+    q2.unshift(root.right);
+
+    while (q1.length > 0 && q2.length > 0) {
+        var temp1 = q1.pop();
+        var temp2 = q2.pop();
+
+        if (temp1 === null && temp2 === null) {
+            continue;
+        }
+
+        if (temp1 === null || temp2 === null) {
+            return false;
+        }
+
+        if (temp1.val !== temp2.val) {
+            return false;
+        }
+
+        q1.unshift(temp1.left);
+        q1.unshift(temp1.right);
+        q2.unshift(temp2.right);
+        q2.unshift(temp2.left);
+    }
+
+    return true;
+};

@@ -3,7 +3,7 @@
  * @return {number}
  */
 /*
- 再看一遍三个元素的数组，可以发现BST的取值方式如下：
+ BST的取值方式如下：
  Count[3] = Count[0]*Count[2]  (1为根的情况)
  + Count[1]*Count[1]  (2为根的情况)
  + Count[2]*Count[0]  (3为根的情况)

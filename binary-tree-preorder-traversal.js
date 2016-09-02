@@ -52,6 +52,7 @@ var preorderTraversal = function (root) {
         var cur = stack.pop();
         ret.push(cur.val);
 
+        // Push right and left children of the popped node to stack
         if (cur.right) {
             stack.push(cur.right);
         }

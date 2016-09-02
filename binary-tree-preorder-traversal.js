@@ -26,3 +26,39 @@ function preorderTraversalBuilder(node, ret) {
     preorderTraversalBuilder(node.left, ret);
     preorderTraversalBuilder(node.right, ret);
 }
+
+// Solution 2
+// Iterative Way
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var preorderTraversal = function (root) {
+    if (root === null) {
+        return [];
+    }
+
+    var stack = [root];
+    var ret = [];
+
+    while (stack.length > 0) {
+        var cur = stack.pop();
+        ret.push(cur.val);
+
+        if (cur.right) {
+            stack.push(cur.right);
+        }
+
+        if (cur.left) {
+            stack.push(cur.left);
+        }
+    }
+    return ret;
+};

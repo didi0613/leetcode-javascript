@@ -14,17 +14,21 @@ var rotateRight = function (head, k) {
     if (head === null || head.next === null || k === 0) {
         return head;
     }
+    // calculate the length of the list
     var len = 0;
     var p = head;
     while (p !== null) {
         p = p.next;
         len++;
     }
+
+    // get the k
     k = k % len;
     if (k === 0) {
         return head;
     }
 
+    // main function: two pointers
     var slower = head, faster = head;
     while (k > 0) {
         faster = faster.next;

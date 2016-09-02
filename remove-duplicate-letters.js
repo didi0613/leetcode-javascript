@@ -1,6 +1,7 @@
 /**
  * @param {string} s
  * @return {string}
+ * Return is the smallest lexi order
  */
 var removeDuplicateLetters = function (s) {
     if (s.length <= 1) {

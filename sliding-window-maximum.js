@@ -23,7 +23,7 @@ var maxSlidingWindow = function (nums, k) {
     }
 
     var ret = [];
-    for (var i = 0; i < len - k + 1; i++) {
+    for (i = 0; i < len - k + 1; i++) {
         ret[i] = Math.max(leftmax[i + k - 1], rightmax[i]);
     }
     return ret;

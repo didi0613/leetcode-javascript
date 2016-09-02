@@ -56,20 +56,23 @@ var inorderTraversal = function (root) {
      c) Go to step 3.
      5) If current is NULL and stack is empty then we are done.
      */
-    var stack = [], ret = [];
+    var ret = [];
+    var stack = [root];
     var cur = root;
 
     stack.push(cur);
-    while (stack.length > 0 || cur !== null) {
+    while (stack.length > 0) {
         if (cur && cur.left) {
-            stack.push(cur.left);
             cur = cur.left;
-        } else if (stack.length > 0) {
-            var tmp = stack.pop();
-            ret.push(tmp.val);
-            cur = tmp.right;
-            if (cur !== null) {
-                stack.push(cur);
+            stack.push(cur);
+        } else {
+            if (stack.length > 0) {
+                var temp = stack.pop();
+                ret.push(temp.val);
+                cur = temp.right;
+                if (cur) {
+                    stack.push(cur);
+                }
             }
         }
     }

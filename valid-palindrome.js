@@ -57,7 +57,7 @@ var isPalindrome = function (s) {
     return true;
 };
 
-// solition 3
+// Solution 3
 // One line solution
 /**
  * @param {string} s

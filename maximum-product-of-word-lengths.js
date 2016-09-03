@@ -13,6 +13,8 @@ var maxProduct = function (words) {
 
     for (i = 0; i < words.length; i++) {
         for (j = 0; j < i; j++) {
+            // & is bitwise AND
+            // && is logical AND
             if ((mask[i] & mask[j]) === 0) {
                 max = Math.max(max, words[i].length * words[j].length);
             }

@@ -13,6 +13,7 @@ function compute(str) {
     if (!regex.test(str)) {
         return [parseInt(str)];
     }
+    
     for (var i = 0; i < str.length; i++) {
         if (regex.test(str[i])) {
             var left = compute(str.substring(0, i));

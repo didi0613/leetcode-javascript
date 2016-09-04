@@ -25,3 +25,31 @@ function helper(numbers, ret, k, target, item, index) {
         item.pop();
     }
 }
+
+// Similar Solution
+/**
+ * @param {number} k
+ * @param {number} n
+ * @return {number[][]}
+ */
+var combinationSum3 = function (k, n) {
+    var ret = [];
+    combinationSum3Builder(k, n, ret, [], 1);
+    return ret;
+};
+
+function combinationSum3Builder(k, n, ret, item, index) {
+    if (item.length > k || n < 0) {
+        return;
+    }
+
+    if (n === 0 && item.length === k) {
+        ret.push(item.slice());
+    }
+
+    for (var i = index; i <= 9; i++) {
+        item.push(i);
+        combinationSum3Builder(k, n - i, ret, item, i + 1);
+        item.pop();
+    }
+}

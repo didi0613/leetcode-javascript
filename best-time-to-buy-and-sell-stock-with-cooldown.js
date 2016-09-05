@@ -12,7 +12,7 @@
  最后显然有sell[n-1] > buy[n-1] 所以我们返回sell[n-1]
  */
 var maxProfit = function (prices) {
-    if (prices.length === 0) {
+    if (prices.length < 2) {
         return 0;
     }
 
@@ -22,7 +22,7 @@ var maxProfit = function (prices) {
     buy[0] = -prices[0];
     buy[1] = Math.max(-prices[0], -prices[1]);
     sell[0] = 0;
-    sell[1] = prices[1] - prices[0];
+    sell[1] = Math.max(0, prices[1] - prices[0]);
 
     for (var i = 2; i < prices.length; i++) {
         buy[i] = Math.max(sell[i - 2] - prices[i], buy[i - 1]);

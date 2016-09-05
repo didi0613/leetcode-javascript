@@ -11,8 +11,7 @@ var uniquePaths = function (m, n) {
 
     var dp = new Array(m);
     for (var i = 0; i < m; i++) {
-        dp[i] = new Array(n);
-        dp[i].fill(1);
+        dp[i] = new Array(n).fill(1);
     }
 
     // initialization

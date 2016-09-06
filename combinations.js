@@ -10,6 +10,10 @@ var combine = function (n, k) {
 };
 
 function helper(n, k, ret, item, index) {
+    if (item.length > k) {
+        return;
+    }
+
     if (k === item.length) {
         ret.push(item.slice());
     }

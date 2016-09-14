@@ -21,12 +21,13 @@
 var maxProfit = function (prices) {
     if (prices == null || prices.length == 0)
         return 0;
+
     var max = 0;
+
     var left = new Array(prices.length);
     left.fill(0);
-    var right = new Array(prices.length);
-    right.fill(0);
     var minPrice = prices[0];
+
     for (var i = 1; i < prices.length; i++) {
         if (minPrice < prices[i]) {
             left[i] = Math.max(left[i - 1], prices[i] - minPrice);
@@ -35,6 +36,9 @@ var maxProfit = function (prices) {
             minPrice = prices[i];
         }
     }
+
+    var right = new Array(prices.length);
+    right.fill(0);
     var maxPrice = prices[prices.length - 1];
     for (var i = prices.length - 2; i >= 0; i--) {
         if (prices[i] < maxPrice) {
@@ -44,6 +48,7 @@ var maxProfit = function (prices) {
             maxPrice = prices[i];
         }
     }
+    
     for (var i = 0; i < prices.length; i++) {
         max = Math.max(max, left[i] + right[i]);
     }
